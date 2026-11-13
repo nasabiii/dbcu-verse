@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+*.local
+# original full-resolution photos stay private; the site uses resized copies in public/photos
+/*.JPG
+/*.JPEG
+/*.jpg
+/moodboard
+.claude
+*.tsbuildinfo
