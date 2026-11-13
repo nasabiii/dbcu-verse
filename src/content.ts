@@ -108,7 +108,7 @@ export const content = {
       artist: 'feat. eminrichu, static-p,...',
       memory: '=))) lúc nào đi karaoke m với mfat cũng hát bài này i can’t get it out of my head',
       lyrics: 'could we hold hands, kiss?',
-      link: '',
+      link: 'https://open.spotify.com/track/4WwziJRU6hAdI4j8C0j0QI',
       tint: 'blush',
     },
     {
@@ -116,7 +116,7 @@ export const content = {
       artist: 'tinashe',
       memory: 't cảm giác m cứ giống bài này (imo) in a good way, chúc bạn sẽ gặp được người match your nasty freak :p',
       lyrics: 'is somebody gonna match my freak?',
-      link: '',
+      link: 'https://open.spotify.com/track/1iIkP4FMKqOw5nqbrKUqEC',
       tint: 'lilac',
     },
     {
@@ -124,7 +124,7 @@ export const content = {
       artist: 'my anh',
       memory: 'ảnh bday m đẹp vl, my shayla, vca bài này mang cho t cảm giác strong nhma hơi bí ẩn và đằng sau đấy soft soft nên thấy giống dbcu, hope everything thuận lợi cho dbcu in all phases of the moon!',
       lyrics: 'i don’t mind going insane holding on',
-      link: '',
+      link: 'https://open.spotify.com/track/7kmuy7PgxxXxavSCn1rGwj',
       tint: 'powder',
     },
     {
@@ -132,7 +132,7 @@ export const content = {
       artist: 'kali uchis',
       memory: '0:52 - 1:40',
       lyrics: 'winners don’t quit',
-      link: '',
+      link: 'https://open.spotify.com/track/1otG6j1WHNvl9WgXLWkHTo',
       tint: 'gold',
     },
   ] as Song[],
@@ -161,12 +161,14 @@ export const content = {
      The sound toggle plays this file (looping). Put the audio file at
      public/audio/superpower.mp3. If the file isn't there, the toggle
      falls back to a soft generated night-sky hum.
-     Sound is always off until the visitor taps it. */
+     With `autoplay: true` the song starts as soon as the browser allows it
+     (most browsers wait for the first tap or key press on the page). */
   optionalAudio: {
     src: `${base}audio/superpower.mp3`,
     title: 'superpower',
     artist: 'daniel caesar',
     volume: 0.6,
+    autoplay: true,
   },
 
   /* ── cake decorating settings ────────────────────────────────── */

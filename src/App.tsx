@@ -76,14 +76,16 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {!chromeHidden && (
-          <div className="pointer-events-none fixed inset-x-0 top-0 z-[55] flex items-start justify-between px-2 pt-[max(6px,env(safe-area-inset-top))] sm:px-4 sm:pt-3">
-            <div className="pointer-events-auto">{scene !== 'intro' && <SceneNavigation scene={scene} progress={progress} onGo={go} tone={tone} />}</div>
-            <div className="pointer-events-auto">
-              <AmbientSoundToggle tone={tone} />
-            </div>
+        {/* stays mounted so the music keeps playing; only fades out during the wish */}
+        <div
+          className={`fixed inset-x-0 top-0 z-[55] flex items-start justify-between px-2 pt-[max(6px,env(safe-area-inset-top))] transition-opacity duration-1000 sm:px-4 sm:pt-3 ${chromeHidden ? 'pointer-events-none opacity-0' : 'pointer-events-none'}`}
+          aria-hidden={chromeHidden || undefined}
+        >
+          <div className={chromeHidden ? '' : 'pointer-events-auto'}>{scene !== 'intro' && <SceneNavigation scene={scene} progress={progress} onGo={go} tone={tone} />}</div>
+          <div className={chromeHidden ? '' : 'pointer-events-auto'}>
+            <AmbientSoundToggle tone={tone} />
           </div>
-        )}
+        </div>
       </main>
     </MotionConfig>
   );

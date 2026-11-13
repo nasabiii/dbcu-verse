@@ -130,7 +130,7 @@ export function SongMemoryOpen({ song, index, onClose }: { song: Song | null; in
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
                   {song.link ? (
                     <a href={song.link} target="_blank" rel="noopener noreferrer" className="hand inline-flex min-h-[44px] items-center gap-2 text-[22px] text-[#8c5a68] underline decoration-[#efc4ce] decoration-2 underline-offset-4">
-                      Listen to this song ↗
+                      {song.link.includes('spotify.com') ? 'Listen on Spotify ↗' : 'Listen to this song ↗'}
                     </a>
                   ) : (
                     <span />

@@ -15,8 +15,9 @@ class Ambient {
   mode: 'file' | 'synth' | null = null;
   private fileFailed = false;
 
-  async start() {
-    if (this.playing) return;
+  /** Resolves to 'blocked' when the browser refuses to play before a user gesture. */
+  async start(): Promise<'playing' | 'blocked'> {
+    if (this.playing) return 'playing';
     this.playing = true;
     if (content.optionalAudio.src && !this.fileFailed) {
       if (!this.audioEl) {
@@ -27,8 +28,13 @@ class Ambient {
       try {
         await this.audioEl.play();
         this.mode = 'file';
-        return;
-      } catch {
+        return 'playing';
+      } catch (err) {
+        if ((err as DOMException)?.name === 'NotAllowedError') {
+          // autoplay policy: wait for the visitor's first tap / key press
+          this.playing = false;
+          return 'blocked';
+        }
         // file missing or unplayable: use the generated hum instead
         this.fileFailed = true;
         this.audioEl = null;
@@ -62,11 +68,17 @@ class Ambient {
         lfo.start();
       });
     }
-    await this.ctx.resume();
+    // resume() can stay pending until a user gesture, so don't wait forever
+    await Promise.race([this.ctx.resume(), new Promise((r) => setTimeout(r, 400))]);
+    if (this.ctx.state !== 'running') {
+      this.playing = false;
+      return 'blocked';
+    }
     const t = this.ctx.currentTime;
     this.master!.gain.cancelScheduledValues(t);
     this.master!.gain.setTargetAtTime(content.optionalAudio.volume, t, 1.2);
     this.scheduleChime();
+    return 'playing';
   }
 
   private scheduleChime() {
