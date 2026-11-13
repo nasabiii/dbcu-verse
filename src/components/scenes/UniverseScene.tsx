@@ -342,7 +342,7 @@ function MemoryStar({ vw, vh, onPhoto }: { vw: number; vh: number; onPhoto: (pho
                 </div>
                 <div className="paper-sheet absolute inset-0 flex flex-col items-center justify-center gap-3 p-5 text-center" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg) rotate(-2deg)', boxShadow: '0 10px 22px -8px rgba(10,14,40,.55)' }}>
                   <Sparkle size={18} color="#e4bf68" />
-                  <p className="hand text-[clamp(19px,2vw,23px)] leading-snug text-[#3b3f5c]">{content.memoryStar.message}</p>
+                  <p className="hand-vi text-[clamp(18px,1.8vw,21px)] leading-snug text-[#3b3f5c]">{content.memoryStar.message}</p>
                 </div>
               </motion.div>
             </button>

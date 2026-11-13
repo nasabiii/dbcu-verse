@@ -153,6 +153,10 @@ button {
 .hand {
   font-family: 'Caveat', cursive;
 }
+/* handwriting for personal text: Caveat has no Vietnamese letters, Patrick Hand does */
+.hand-vi {
+  font-family: 'Patrick Hand', cursive;
+}
 .typewriter {
   font-family: 'Special Elite', monospace;
 }

@@ -123,7 +123,7 @@ export function SongMemoryOpen({ song, index, onClose }: { song: Song | null; in
               >
                 <div aria-hidden className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-[#c8bba4]/60 to-transparent" />
                 <p className="hand text-[15px] uppercase tracking-[0.2em] text-[#9b8f86]">why it’s you</p>
-                <p className="hand mt-2 text-[clamp(22px,2.6vw,27px)] leading-snug text-[#2f3150]">{song.memory}</p>
+                <p className="hand-vi mt-2 text-[clamp(19px,2.2vw,22px)] leading-relaxed text-[#2f3150]">{song.memory}</p>
                 {song.lyrics && (
                   <blockquote className="mt-5 border-l-2 border-[#efc4ce] pl-4 font-serif text-[19px] italic leading-relaxed text-[#5b4b5f]">“{song.lyrics}”</blockquote>
                 )}
