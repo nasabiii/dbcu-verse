@@ -1,4 +1,4 @@
-# A Little Universe for You ✧
+# dbcu.verse ✧
 
 A handmade, interactive birthday storybook: a night-sky intro, a cake you decorate and make a wish on, a personal planet to explore, a scrapbook playlist, and a hidden letter.
 

@@ -14,10 +14,18 @@ class Ambient {
   /** what is actually playing: the song file, or the generated hum */
   mode: 'file' | 'synth' | null = null;
   private fileFailed = false;
+  private pending: Promise<'playing' | 'blocked'> | null = null;
 
   /** Resolves to 'blocked' when the browser refuses to play before a user gesture. */
-  async start(): Promise<'playing' | 'blocked'> {
-    if (this.playing) return 'playing';
+  start(): Promise<'playing' | 'blocked'> {
+    // share one in-flight attempt so overlapping calls agree on the result
+    if (this.pending) return this.pending;
+    if (this.playing) return Promise.resolve('playing');
+    this.pending = this.begin().finally(() => (this.pending = null));
+    return this.pending;
+  }
+
+  private async begin(): Promise<'playing' | 'blocked'> {
     this.playing = true;
     if (content.optionalAudio.src && !this.fileFailed) {
       if (!this.audioEl) {

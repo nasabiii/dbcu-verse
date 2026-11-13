@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   ✧  A LITTLE UNIVERSE FOR YOU — EDIT EVERYTHING PERSONAL HERE  ✧
+   ✧  dbcu.verse — EDIT EVERYTHING PERSONAL HERE  ✧
    ───────────────────────────────────────────────────────────────────────
    This is the ONLY file you need to touch to personalise the site.
 
